@@ -1,6 +1,6 @@
 import { Point } from "@/lib/physics";
 
-export class Walker extends Point {
+export class TraditionalWalker extends Point {
     constructor(x: number, y: number) {
         super(x, y);
     }
