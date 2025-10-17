@@ -6,6 +6,9 @@ export class Engine {
     private ctx: CanvasRenderingContext2D;
     private entities: Entity[];
 
+    private width: number;
+    private height: number;
+
     constructor() {
         this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
         this.ctx = this.canvas.getContext('2d');
@@ -32,17 +35,21 @@ export class Engine {
 
     render() {
         this.ctx.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight)
+        this.ctx.fillRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight)
         this.entities.forEach(e => e.render(this.ctx));
     }
 
     /** HANDLERS */
     handleResize() {
+        this.width = this.canvas.offsetWidth;
+        this.height = this.canvas.offsetHeight;
+
         if (window.devicePixelRatio > 1) {
             this.canvas.width = this.canvas.clientWidth * 2;
             this.canvas.height = this.canvas.clientHeight * 2;
         } else {
-            this.canvas.width = this.canvas.offsetHeight;
-            this.canvas.height = this.canvas.offsetWidth;
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
         }
     }
 
