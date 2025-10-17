@@ -1,4 +1,4 @@
-import { Entity } from "@/ui/entity";
+import { Entity } from "@/core/entity";
 
 export class Vector extends Entity {
     private origin: [number, number];

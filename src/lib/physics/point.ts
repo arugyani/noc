@@ -1,4 +1,4 @@
-import { Entity } from "@/ui/entity";
+import { Entity } from "@/core/entity";
 
 export class Point extends Entity {
     public x: number;

@@ -1,3 +1,3 @@
-export function createListener(event: string, callback: () => void) {
+export function createListener(event: string, callback: EventListenerOrEventListenerObject) {
     window.addEventListener(event, callback);
 }

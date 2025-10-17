@@ -1,59 +1,57 @@
-import { Entity } from "@/ui/entity";
 import { createListener } from "@/core/events";
+import { Point } from "@/lib/physics";
 
 export class Engine {
     private canvas: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
-    private entities: Entity[];
 
-    private width: number;
-    private height: number;
+    public width: number;
+    public height: number;
 
     constructor() {
         this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-        this.ctx = this.canvas.getContext('2d');
-        this.entities = [];
+        
+        const ctx = this.canvas.getContext('2d');
+        if (!ctx) throw new Error('2D context not available!');
+        this.ctx = ctx;
+
+        createListener('resize', () => this.handleResize());
+        this.handleResize();
     }    
 
     /** PRIMARY */
-    start() {
-        createListener('resize', this.handleResize);
-
+    start(callback?: () => void) {
         const main = () => {
             window.requestAnimationFrame(main);
+
+            if (callback) callback();
+            
             this.update();
             this.render();
         }
 
-        this.handleResize();
         main();
     }
     
-    update() {
-        this.entities.forEach(e => e.update());
-    }
+    private update() {}
 
-    render() {
-        this.ctx.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight)
-        this.entities.forEach(e => e.render(this.ctx));
+    private render() {
+        this.ctx.clearRect(0, 0, this.width, this.height)
     }
 
     /** HANDLERS */
-    handleResize() {
-        this.width = this.canvas.offsetWidth;
-        this.height = this.canvas.offsetHeight;
+    private handleResize() {
+        const cssWidth = this.canvas.clientWidth;
+        const cssHeight = this.canvas.clientHeight;
+        const dpr = window.devicePixelRatio || 1;
 
-        if (window.devicePixelRatio > 1) {
-            this.canvas.width = this.canvas.clientWidth * 2;
-            this.canvas.height = this.canvas.clientHeight * 2;
-        } else {
-            this.canvas.width = this.width;
-            this.canvas.height = this.height;
-        }
-    }
+        this.canvas.width = Math.round(cssWidth * dpr);
+        this.canvas.height = Math.round(cssHeight * dpr);
 
-    /** ADD & REMOVE */
-    addEntity(e: Entity) {
-        this.entities.push(e);
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+        this.ctx.scale(dpr, dpr);
+
+        this.width = cssWidth;
+        this.height = cssHeight;
     }
 }
