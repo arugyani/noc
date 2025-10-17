@@ -6,11 +6,10 @@ export class TraditionalWalker extends Point {
     }
 
     update() {
-        let choice = Math.floor(Math.random() * 4);
+        let xstep = Math.floor(Math.random() * 3) - 1;
+        let ystep = Math.floor(Math.random() * 3) - 1;
         
-        if (choice === 0) this.x++;
-        else if (choice === 1) this.x--;
-        else if (choice === 2) this.y++;
-        else if (choice === 3) this.y--;
+        this.x += xstep;
+        this.y += ystep;
     }
 }
