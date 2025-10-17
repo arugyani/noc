@@ -1,4 +1,4 @@
-import { Entity } from "@/ui/entity";
+import { Entity } from "@/core/entity";
 
 export class Point extends Entity {
     public x: number;
@@ -13,7 +13,7 @@ export class Point extends Entity {
 
     render(ctx: CanvasRenderingContext2D) {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 10, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
         ctx.fill();
     }
 

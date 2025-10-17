@@ -18,3 +18,12 @@ canvas {
     width: 100vw;
     height: 100vh;
 }
+
+#container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    display: flex;
+    gap: 2px;
+}

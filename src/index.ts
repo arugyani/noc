@@ -1,9 +1,15 @@
 import { Engine } from "@/core/engine";
-import { Vector } from "@/lib/physics";
+import { TraditionalWalker } from "@/book/random/walkers";
+import { createButton } from "@/ui";
 
-
+/** ENGINE */
 const engine = new Engine();
-const vector = new Vector(10, 30);
 
-engine.addEntity(vector);
+/** RANDOM WALKERS */
+const traditional = createButton("Traditional", () => {
+    engine.setEntity(new TraditionalWalker(engine.width / 2, engine.height / 2));
+})
+
+const clear = createButton("Reset", () => engine.reset())
+
 engine.start();
