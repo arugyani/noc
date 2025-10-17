@@ -7,7 +7,7 @@
 .vscode/
 .github/
 
-build/
+dist/
 node_modules/
 
 # MISCELLANEOUS

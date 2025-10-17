@@ -5,9 +5,11 @@
         "sourceMap": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
-        "target": "es2024",
+        "module": "es6",
+        "target": "es5",
+        "moduleResolution": "node",
         "baseUrl": "./",
-        "outDir": "./build",
+        "outDir": "./dist/",
         "paths": {
             "@/*": ["src/*"]
         }

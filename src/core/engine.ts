@@ -1,5 +1,5 @@
-import { Entity } from "@/ui/entity.js";
-import { createListener } from "@/core/events.js";
+import { Entity } from "@/ui/entity";
+import { createListener } from "@/core/events";
 
 export class Engine {
     private canvas: HTMLCanvasElement;
