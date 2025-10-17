@@ -4,6 +4,20 @@ export class Vector {
         this.y = y;
     }
 
+    render(canvas) {
+        const { ctx, width, height } = canvas;
+
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.moveTo(width / 2, height / 2);
+        ctx.lineTo(this.x, this.y);
+        ctx.stroke();
+    }
+
+    update() {
+        
+    }
+
     add(v) {
         this.x = this.x + v.x;
         this.y = this.y + v.y;
