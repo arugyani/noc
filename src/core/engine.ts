@@ -35,7 +35,6 @@ export class Engine {
 
     render() {
         this.ctx.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight)
-        this.ctx.fillRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight)
         this.entities.forEach(e => e.render(this.ctx));
     }
 
