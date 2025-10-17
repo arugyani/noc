@@ -1,6 +1,6 @@
 # Nature of Code
 
-[*Nature of Code*](https://natureofcode.com/) is an incredible book written by Daniel Shiffman that teaches you some techniques behind computer simulations of natural systems.
+[*Nature of Code by Daniel Shiffman*](https://natureofcode.com/) is an incredible book that teaches you some techniques behind computer simulations of natural systems.
 
 This repository contains demos for the various demos I've built from scratch as I work through the book.
 
