@@ -1,2 +1,11 @@
+# CACHE
+.eslintcache
+.npm
+*.tsbuildinfo
+
+# DIRECTORIES
+build/
 node_modules/
+
+# MISCELLANEOUS
 .DS_Store

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "target": "es2024",
+        "baseUrl": "./",
+        "outDir": "./build",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    },
+    "include": ["./src/**/*"],
+}

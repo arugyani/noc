@@ -7,6 +7,8 @@
     "example": "examples"
   },
   "scripts": {
+    "build": "tsc && npm run build:public",
+    "build:public": "cp ./public/** ./build/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

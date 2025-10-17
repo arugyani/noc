@@ -1,39 +1,46 @@
-export class Vector {
-    constructor(x, y) {
+import { Entity } from "@/ui/entity";
+
+export class Vector extends Entity {
+    private origin: [number, number];
+
+    public x: number;
+    public y: number;
+
+    constructor(x: number, y: number) {
+        super();
+
         this.x = x;
         this.y = y;
+        this.origin = [0, 0];
     }
 
-    render(canvas) {
-        const { ctx, width, height } = canvas;
-
+    render(ctx: CanvasRenderingContext2D) {
         ctx.strokeStyle = "black";
         ctx.beginPath();
-        ctx.moveTo(width / 2, height / 2);
+        ctx.moveTo(this.origin[0], this.origin[1]);
         ctx.lineTo(this.x, this.y);
         ctx.stroke();
     }
 
-    update() {
-        
-    }
+    update() {}
 
-    add(v) {
+    /** MATH */
+    add(v: Vector) {
         this.x = this.x + v.x;
         this.y = this.y + v.y;
     }
 
-    sub(v) {
+    sub(v: Vector) {
         this.x = this.x - v.x;
         this.y = this.y - v.y;
     }
 
-    mult(n) {
+    mult(n: number) {
         this.x = this.x * n;
         this.y = this.y * n;
     }
 
-    div(n) {
+    div(n: number) {
         this.x = this.x / n;
         this.y = this.y / n;
     }
@@ -50,10 +57,19 @@ export class Vector {
         }
     }
 
-    limit(max) {
+    limit(max: number) {
         if (this.mag() > max) {
             this.norm();
             this.mult(max);
         }
+    }
+    
+    /** UTIL */
+    setOrigin(x: number, y: number) {
+        this.origin = [x, y];
+    }
+
+    clearOrigin() {
+        this.origin = [0, 0];
     }
 }
