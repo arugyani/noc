@@ -4,6 +4,9 @@
 *.tsbuildinfo
 
 # DIRECTORIES
+.vscode/
+.github/
+
 build/
 node_modules/
 
