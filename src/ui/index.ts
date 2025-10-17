@@ -1,9 +1,12 @@
-export function setupUi() {
+export function createButton(text: string, callback: (e?: Event) => void) {
     const button = document.createElement("button");
-    const content = document.createTextNode("Vectors");
+    const content = document.createTextNode(text);
 
     button.appendChild(content);
+    button.onclick = callback
 
-    const root = document.getElementById("root");
-    root.prepend(button);
+    const container = document.getElementById("container");
+    container.append(button);
+
+    return button;
 }

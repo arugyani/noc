@@ -19,8 +19,11 @@ canvas {
     height: 100vh;
 }
 
-button {
+#container {
     position: absolute;
     top: 10px;
     left: 10px;
+
+    display: flex;
+    gap: 2px;
 }

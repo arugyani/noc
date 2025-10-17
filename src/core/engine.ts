@@ -1,14 +1,19 @@
 import { createListener } from "@/core/events";
-import { Point } from "@/lib/physics";
+import { Entity } from "./entity";
+
+export type EngineProps = {
+    clear?: boolean
+};
 
 export class Engine {
     private canvas: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
+    private entity: Entity;
 
     public width: number;
     public height: number;
 
-    constructor() {
+    constructor(clear?: boolean) {
         this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
         
         const ctx = this.canvas.getContext('2d');
@@ -17,7 +22,7 @@ export class Engine {
 
         createListener('resize', () => this.handleResize());
         this.handleResize();
-    }    
+    }
 
     /** PRIMARY */
     start(callback?: () => void) {
@@ -33,10 +38,12 @@ export class Engine {
         main();
     }
     
-    private update() {}
+    private update() {
+        if (this.entity) this.entity.update();
+    }
 
     private render() {
-        this.ctx.clearRect(0, 0, this.width, this.height)
+        if (this.entity) this.entity.render(this.ctx);
     }
 
     /** HANDLERS */
@@ -53,5 +60,16 @@ export class Engine {
 
         this.width = cssWidth;
         this.height = cssHeight;
+    }
+
+    /** ENTITIES */
+    setEntity(entity: Entity) {
+        this.entity = entity;
+    }
+
+    /** RENDERING */
+    reset() {
+        this.entity = null;
+        this.ctx.clearRect(0, 0, this.width, this.height);
     }
 }
