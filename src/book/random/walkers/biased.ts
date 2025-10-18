@@ -1,9 +1,10 @@
+import { random } from "@/lib/math";
 import { Point } from "@/lib/physics";
 
-export class TraditionalWalker extends Point {
+export class BiasedWalker extends Point {
     update() {
-        let xstep = Math.floor(Math.random() * 3) - 1;
-        let ystep = Math.floor(Math.random() * 3) - 1;
+        let xstep = random(-2.75, 3);
+        let ystep = random(-2.75, 3);
         
         this.x += xstep;
         this.y += ystep;
