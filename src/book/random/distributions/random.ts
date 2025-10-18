@@ -24,7 +24,7 @@ export class RandomDistribution extends Entity {
 
     render(ctx: CanvasRenderingContext2D) {
         this.arr.forEach((val, i) => {
-                ctx.fillStyle = "#7f7f7f"
+                ctx.fillStyle = "#FBFFF1"
                 ctx.lineWidth = 3;
                 ctx.fillRect(i * this.width, this.dimensions.y - val, this.width - 1, val)
 

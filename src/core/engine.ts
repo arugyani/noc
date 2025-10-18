@@ -64,12 +64,17 @@ export class Engine {
 
     /** ENTITIES */
     setEntity(entity: Entity) {
+        this.clear();
         this.entity = entity;
     }
 
     /** RENDERING */
     reset() {
         this.entity = null;
+        this.clear();
+    }
+
+    clear() {
         this.ctx.clearRect(0, 0, this.width, this.height);
     }
 }

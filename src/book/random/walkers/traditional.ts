@@ -12,4 +12,9 @@ export class TraditionalWalker extends Point {
         this.x += xstep;
         this.y += ystep;
     }
+
+    render(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = "#FBFFF1";
+        super.render(ctx);
+    }
 }
