@@ -31,6 +31,6 @@ const biasedWalker = createButton("0.1 - A Biased Random Walk", () => {
     engine.setEntity(new BiasedWalker(engine.width / 2, engine.height / 2));
 })
 
-const clear = createButton("Reset", () => engine.reset())
+const reset = createButton("Reset", () => engine.reset(), "menu")
 
 engine.start();
